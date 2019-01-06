@@ -7,19 +7,32 @@ import javax.xml.bind.Marshaller;
 
 import com.danibuiza.jaxb.ultimate.business.Countries;
 import com.danibuiza.jaxb.ultimate.business.Country;
+import static java.lang.Float.max;
+import static java.lang.Float.min;
 import java.util.Random;
+import java.util.logging.Logger;
 
 public class CountryOps {
+
+    private static final Logger LOG = Logger.getLogger(CountryOps.class.getName());
+    private int min = 1;
+    private int max = 999;
 
     public CountryOps() {
     }
 
-    protected Country newFakeRandomCountry() throws Exception {
+    public Country newFakeRandomCountry() throws Exception {
         Country country = new Country();
         country.setName(randomString());
         country.setCapital(randomString());
         country.setContinent(randomString());
+        country.setPopulation(randomInt());
         return country;
+    }
+
+    private int randomInt() {
+        Random rand = new Random();
+        return rand.nextInt((max + 1) - min) + min;
     }
 
     private String randomString() {
@@ -35,7 +48,7 @@ public class CountryOps {
 
     }
 
-    protected void marshallCountriesAndWriteToFile(Countries countries) throws Exception {
+    public void marshallCountriesAndWriteToFile(Countries countries) throws Exception {
         /* init jaxb marshaler */
         JAXBContext jaxbContext = JAXBContext.newInstance(Countries.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();

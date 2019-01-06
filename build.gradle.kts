@@ -29,7 +29,11 @@ dependencies {
 }
 
 application {
-      mainClassName = "com.danibuiza.jaxb.ultimate.marshal.JaxBExampleList"
+      mainClassName = "net.bounceme.dur.jaxb.hello.world.App";
+    //    mainClassName = "com.danibuiza.jaxb.ultimate.marshal.JaxBExampleList"
+
+//package net.bounceme.dur.jaxb.hello.world;
+
 }
 
 val test by tasks.getting(Test::class) {

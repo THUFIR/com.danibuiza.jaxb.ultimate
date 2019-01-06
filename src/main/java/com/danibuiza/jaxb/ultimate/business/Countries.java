@@ -2,9 +2,11 @@ package com.danibuiza.jaxb.ultimate.business;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import net.bounceme.dur.jaxb.hello.world.App;
 
 /**
  * JaxB is not capable of marshal lists directly as root elements, so we need a
@@ -15,6 +17,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "Countries")
 public class Countries {
 
+    private static final Logger LOG = Logger.getLogger(Countries.class.getName());
+
     private List<Country> countries = null;
 
     public List<Country> getCountries() {
@@ -23,6 +27,7 @@ public class Countries {
 
     /**
      * element that is going to be marshaled in the xml
+     *
      * @param countries
      */
     @XmlElement(name = "Country")
