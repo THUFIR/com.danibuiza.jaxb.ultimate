@@ -7,8 +7,7 @@ import javax.xml.bind.Marshaller;
 
 import com.danibuiza.jaxb.ultimate.business.Countries;
 import com.danibuiza.jaxb.ultimate.business.Country;
-import static java.lang.Float.max;
-import static java.lang.Float.min;
+import java.nio.file.Path;
 import java.util.Random;
 import java.util.logging.Logger;
 
@@ -48,7 +47,7 @@ public class CountryOps {
 
     }
 
-    public void marshallCountriesAndWriteToFile(Countries countries) throws Exception {
+    public void marshallCountriesAndWriteToFile(Countries countries, Path path) throws Exception {
         /* init jaxb marshaler */
         JAXBContext jaxbContext = JAXBContext.newInstance(Countries.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
@@ -57,8 +56,10 @@ public class CountryOps {
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
         /* marshaling of java objects in xml (output to file and standard output) */
-        jaxbMarshaller.marshal(countries, new File("list_countries.xml"));
+        jaxbMarshaller.marshal(countries, new File(path.toString()));
+//        jaxbMarshaller.marshal(countries, new File("list_countries.xml"));
         jaxbMarshaller.marshal(countries, System.out);
 
     }
+
 }
