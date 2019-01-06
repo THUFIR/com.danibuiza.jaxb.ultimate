@@ -26,7 +26,7 @@ public class App {
         CountryOps ops = new CountryOps();
         Countries countries = new Countries();
         Country c = null;
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 99; i++) {
             c = ops.newFakeRandomCountry();
             countries.add(c);
         }
