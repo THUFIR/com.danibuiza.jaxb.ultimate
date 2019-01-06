@@ -29,8 +29,7 @@ dependencies {
 }
 
 application {
-    // Define the main class for the application
-    mainClassName = "com.danibuiza.jaxb.ultimate.App"
+      mainClassName = "com.danibuiza.jaxb.ultimate.marshal.JaxBExampleSimple"
 }
 
 val test by tasks.getting(Test::class) {
