@@ -1,4 +1,4 @@
-package com.danibuiza.jaxb.ultimate.marshal;
+package net.bounceme.dur.jaxb.hello.world;
 
 import java.io.File;
 
