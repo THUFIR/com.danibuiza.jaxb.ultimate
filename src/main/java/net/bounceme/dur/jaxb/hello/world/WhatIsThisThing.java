@@ -9,6 +9,6 @@ package net.bounceme.dur.jaxb.hello.world;
  *
  * @author thufir
  */
-class Thing {
+class WhatIsThisThing {
     
 }

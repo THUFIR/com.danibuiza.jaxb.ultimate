@@ -17,19 +17,18 @@ public class HyperTextMarshaller {
     public HyperTextMarshaller() {
     }
 
-    public void hyperText(URL url, URI outputURI) throws Exception {
-        LOG.info(url.toExternalForm());
-        File file = new File(outputURI);
-        file.createNewFile();
+    public void marshallHTML(URL url, URI outputURI) throws Exception {
+        File fileToWriteHTML = new File(outputURI);
+        fileToWriteHTML.createNewFile();
 
-        JAXBContext jaxbContext = JAXBContext.newInstance(Thing.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(WhatIsThisThing.class);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         UnmarshallerHandler unMarshallerHandler = unmarshaller.getUnmarshallerHandler();
         XMLReader xmlReader = new org.ccil.cowan.tagsoup.Parser();
         xmlReader.parse(url.toString());
         xmlReader.setContentHandler(unMarshallerHandler);
 //        Thing thing = (Thing) unmarshaller.unmarshal(new File(outputURI));
-        unmarshaller.unmarshal(file);
+        unmarshaller.unmarshal(fileToWriteHTML);
     }
 
 }

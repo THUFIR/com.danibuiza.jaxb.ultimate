@@ -21,7 +21,7 @@ public class App {
         URI outputForHTML = new URI(properties.getProperty("output_html_to_uri"));
         URL inputURL = new URL(properties.getProperty("url"));
         HyperTextMarshaller hyperTextMarshaller = new HyperTextMarshaller();
-        hyperTextMarshaller.hyperText(inputURL, outputForHTML);
+        hyperTextMarshaller.marshallHTML(inputURL, outputForHTML);
     }
 
     private void marshallAndWrite() throws Exception {
