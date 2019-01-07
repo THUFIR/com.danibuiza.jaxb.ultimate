@@ -11,13 +11,13 @@ import java.nio.file.Path;
 import java.util.Random;
 import java.util.logging.Logger;
 
-public class CountryOps {
+public class CountryMarshaller {
 
-    private static final Logger LOG = Logger.getLogger(CountryOps.class.getName());
+    private static final Logger LOG = Logger.getLogger(CountryMarshaller.class.getName());
     private int min = 1;
     private int max = 999;
 
-    public CountryOps() {
+    public CountryMarshaller() {
     }
 
     public Country newFakeRandomCountry() throws Exception {

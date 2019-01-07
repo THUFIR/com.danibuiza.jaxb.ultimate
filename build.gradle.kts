@@ -23,17 +23,12 @@ repositories {
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
     implementation("com.google.guava:guava:26.0-jre")
-
     // Use TestNG framework, also requires calling test.useTestNG() below
-    testImplementation("org.testng:testng:6.14.3")
+    //testImplementation("org.testng:testng:6.14.3")
 }
 
 application {
       mainClassName = "net.bounceme.dur.jaxb.hello.world.App";
-    //    mainClassName = "com.danibuiza.jaxb.ultimate.marshal.JaxBExampleList"
-
-//package net.bounceme.dur.jaxb.hello.world;
-
 }
 
 val test by tasks.getting(Test::class) {

@@ -2,9 +2,8 @@ package net.bounceme.dur.jaxb.hello.world;
 
 import com.danibuiza.jaxb.ultimate.business.Countries;
 import com.danibuiza.jaxb.ultimate.business.Country;
-import com.danibuiza.jaxb.ultimate.marshal.CountryOps;
+import com.danibuiza.jaxb.ultimate.marshal.CountryMarshaller;
 import java.net.URI;
-import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
@@ -21,11 +20,10 @@ public class App {
 
     private void marshallAndWrite() throws Exception {
         properties.loadFromXML(App.class.getResourceAsStream("/jaxb.xml"));
-        String s = properties.getProperty("path");
-        URI z = new URI(s);
-        LOG.info(z.toString());
-        Path path = Paths.get(z);
-        CountryOps ops = new CountryOps();
+        String stringPath1 = properties.getProperty("path_uri");
+        Path path = Paths.get(new URI(stringPath1));
+
+        CountryMarshaller ops = new CountryMarshaller();
         Countries countries = new Countries();
         Country c = null;
         for (int i = 0; i < 9; i++) {
