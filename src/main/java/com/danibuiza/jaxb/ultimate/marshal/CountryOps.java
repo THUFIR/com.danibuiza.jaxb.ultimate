@@ -48,6 +48,7 @@ public class CountryOps {
     }
 
     public void marshallCountriesAndWriteToFile(Countries countries, Path path) throws Exception {
+        LOG.info(path.toString());
         /* init jaxb marshaler */
         JAXBContext jaxbContext = JAXBContext.newInstance(Countries.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
