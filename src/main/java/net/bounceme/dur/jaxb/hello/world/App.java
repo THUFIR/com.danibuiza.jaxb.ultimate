@@ -13,16 +13,15 @@ public class App {
     private Countries countries = null;
 
     public static void main(final String... args) throws Exception {
-        new App().marshallAndWrite();
+        new App().html();
     }
 
     private void html() throws Exception {
         properties.loadFromXML(App.class.getResourceAsStream("/jaxb.xml"));
-        URI inputURI = new URI(properties.getProperty("input_uri"));
-        URI outputHTML = new URI(properties.getProperty("output_html_to_uri"));
-        URL url = new URL(properties.getProperty("url"));
-        HyperTextMarshaller htm = new HyperTextMarshaller();
-        htm.hyperText(url, outputHTML);
+        URI outputForHTML = new URI(properties.getProperty("output_html_to_uri"));
+        URL inputURL = new URL(properties.getProperty("url"));
+        HyperTextMarshaller hyperTextMarshaller = new HyperTextMarshaller();
+        hyperTextMarshaller.hyperText(inputURL, outputForHTML);
     }
 
     private void marshallAndWrite() throws Exception {
