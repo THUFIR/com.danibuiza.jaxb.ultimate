@@ -7,9 +7,11 @@ import javax.xml.bind.Marshaller;
 
 import com.danibuiza.jaxb.ultimate.business.Countries;
 import com.danibuiza.jaxb.ultimate.business.Country;
+import java.net.URI;
 import java.nio.file.Path;
 import java.util.Random;
 import java.util.logging.Logger;
+import javax.xml.bind.Unmarshaller;
 
 public class CountryMarshaller {
 
@@ -47,18 +49,24 @@ public class CountryMarshaller {
 
     }
 
-    public void marshallCountriesAndWriteToFile(Countries countries, Path path) throws Exception {
-        LOG.info(path.toString());
-        /* init jaxb marshaler */
+    public void unmarshallCountriesFromFile(Path path) throws Exception {
+        File file = new File(path.toUri());
+        JAXBContext jaxbContext = JAXBContext.newInstance(Countries.class);
+
+        /**
+         * the only difference with the marshaling operation is here
+         */
+        Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+        Countries countres = (Countries) jaxbUnmarshaller.unmarshal(file);
+        System.out.println(countres);
+
+    }
+
+    public void marshallCountriesAndWriteToFile(Countries countries, URI uri) throws Exception {
         JAXBContext jaxbContext = JAXBContext.newInstance(Countries.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-
-        /* set this flag to true to format the output */
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
-        /* marshaling of java objects in xml (output to file and standard output) */
-        jaxbMarshaller.marshal(countries, new File(path.toString()));
-//        jaxbMarshaller.marshal(countries, new File("list_countries.xml"));
+        jaxbMarshaller.marshal(countries, new File(uri));
         jaxbMarshaller.marshal(countries, System.out);
 
     }

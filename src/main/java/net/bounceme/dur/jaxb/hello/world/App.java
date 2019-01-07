@@ -21,7 +21,7 @@ public class App {
     private void marshallAndWrite() throws Exception {
         properties.loadFromXML(App.class.getResourceAsStream("/jaxb.xml"));
         String stringPath1 = properties.getProperty("path_uri");
-        Path path = Paths.get(new URI(stringPath1));
+        URI uri = new URI(stringPath1);
 
         CountryMarshaller ops = new CountryMarshaller();
         Countries countries = new Countries();
@@ -30,6 +30,6 @@ public class App {
             c = ops.newFakeRandomCountry();
             countries.add(c);
         }
-        ops.marshallCountriesAndWriteToFile(countries, path);
+        ops.marshallCountriesAndWriteToFile(countries, uri);
     }
 }
