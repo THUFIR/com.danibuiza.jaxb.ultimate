@@ -6,7 +6,6 @@ import java.util.logging.Logger;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import net.bounceme.dur.jaxb.hello.world.App;
 
 /**
  * JaxB is not capable of marshal lists directly as root elements, so we need a

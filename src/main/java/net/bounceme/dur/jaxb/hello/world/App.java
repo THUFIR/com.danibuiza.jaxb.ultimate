@@ -19,9 +19,10 @@ public class App {
     private void html() throws Exception {
         properties.loadFromXML(App.class.getResourceAsStream("/jaxb.xml"));
         URI outputForHTML = new URI(properties.getProperty("output_html_to_uri"));
-        URL inputURL = new URL(properties.getProperty("url"));
+        URL inputURL = new URL(properties.getProperty("note"));
         HyperTextMarshaller hyperTextMarshaller = new HyperTextMarshaller();
-        hyperTextMarshaller.marshallHTML(inputURL, outputForHTML);
+        MyNote myNote = new MyNote();
+        hyperTextMarshaller.marshallXML2(myNote, inputURL, outputForHTML);
     }
 
     private void marshallAndWrite() throws Exception {
