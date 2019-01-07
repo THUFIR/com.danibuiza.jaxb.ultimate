@@ -8,7 +8,6 @@ import javax.xml.bind.Marshaller;
 import com.danibuiza.jaxb.ultimate.business.Countries;
 import com.danibuiza.jaxb.ultimate.business.Country;
 import java.net.URI;
-import java.nio.file.Path;
 import java.util.Random;
 import java.util.logging.Logger;
 import javax.xml.bind.Unmarshaller;
@@ -22,7 +21,17 @@ public class CountryMarshaller {
     public CountryMarshaller() {
     }
 
-    public Country newFakeRandomCountry() throws Exception {
+    public Countries getManyCountries(int max) throws Exception {
+        Countries countries = new Countries();
+        Country country = null;
+        for (int i = 0; i < max; i++) {
+            country = newFakeRandomCountry();
+            countries.add(country);
+        }
+        return countries;
+    }
+
+    private Country newFakeRandomCountry() throws Exception {
         Country country = new Country();
         country.setName(randomString());
         country.setCapital(randomString());
@@ -49,17 +58,12 @@ public class CountryMarshaller {
 
     }
 
-    public void unmarshallCountriesFromFile(Path path) throws Exception {
-        File file = new File(path.toUri());
+    public Countries unmarshallCountriesFromFile(URI uri) throws Exception {
+        File file = new File(uri);
         JAXBContext jaxbContext = JAXBContext.newInstance(Countries.class);
-
-        /**
-         * the only difference with the marshaling operation is here
-         */
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-        Countries countres = (Countries) jaxbUnmarshaller.unmarshal(file);
-        System.out.println(countres);
-
+        Countries countries = (Countries) jaxbUnmarshaller.unmarshal(file);
+        return countries;
     }
 
     public void marshallCountriesAndWriteToFile(Countries countries, URI uri) throws Exception {
