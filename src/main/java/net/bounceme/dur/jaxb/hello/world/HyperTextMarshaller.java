@@ -19,8 +19,7 @@ public class HyperTextMarshaller {
         LOG.info(outputURI.toString());
         JAXBContext jaxbContext = JAXBContext.newInstance(MyNote.class);
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-        //  MyNote note = (MyNote) jaxbUnmarshaller.unmarshal(url);
-       
+        MyNote note = (MyNote) jaxbUnmarshaller.unmarshal(url);
     }
 
 
