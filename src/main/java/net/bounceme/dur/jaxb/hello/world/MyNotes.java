@@ -17,15 +17,18 @@ public class MyNotes {
     }
 
     public List<MyNote> getMyNotes() {
+        LOG.info(myNotes.toString());
         return myNotes;
     }
 
     @XmlElement(name = "Note")
     public void setMyNotes(List<MyNote> myNotes) {
+        LOG.info(myNotes.toString());
         this.myNotes = myNotes;
     }
 
     public void add(MyNote myNote) {
+        LOG.info(myNote.toString());
         myNotes.add(myNote);
     }
 

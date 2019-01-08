@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlType;
 /*
 <note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note>
  */
-@XmlType(propOrder = {"to", "from", "heading", "body"})
+@XmlType(propOrder = {"note", "to", "from", "heading", "body"})
 @XmlRootElement(name = "note")
 public class MyNote {
 
@@ -62,6 +62,11 @@ public class MyNote {
     @XmlElement(name = "Country_Population")
     public void setBody(String body) {
         this.body = body;
+    }
+
+    @Override
+    public String toString() {
+        return note + to + from + heading + body;
     }
 
 }

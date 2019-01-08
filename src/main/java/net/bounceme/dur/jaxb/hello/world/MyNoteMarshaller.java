@@ -1,14 +1,11 @@
 package net.bounceme.dur.jaxb.hello.world;
 
-import com.danibuiza.jaxb.ultimate.business.Countries;
 import java.io.File;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import java.net.URI;
 import java.util.Random;
 import java.util.logging.Logger;
-import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 public class MyNoteMarshaller {
@@ -69,13 +66,12 @@ public class MyNoteMarshaller {
         jaxbMarshaller.marshal(notes, System.out);
     }
 
-    void marshallCountriesAndWriteToFile(MyNotes myNotes, URI inputURI) throws Exception {
+    void marshallNotesAndWriteToFile(MyNotes myNotes, URI inputURI) throws Exception {
         JAXBContext jaxbContext = JAXBContext.newInstance(MyNotes.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         jaxbMarshaller.marshal(myNotes, new File(inputURI));
         jaxbMarshaller.marshal(myNotes, System.out);
-
     }
 
     MyNotes unmarshallCountriesFromFile(URI inputURI) throws Exception {
@@ -87,4 +83,3 @@ public class MyNoteMarshaller {
 
     }
 }
-

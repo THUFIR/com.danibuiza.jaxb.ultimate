@@ -13,7 +13,7 @@ public class App {
     private Countries myNotes = null;
 
     public static void main(final String... args) throws Exception {
-        new App().marshallAndWrite();
+        new App().marshallAndWriteNotes();
     }
 
     private void html() throws Exception {
@@ -32,12 +32,12 @@ public class App {
         int numberOfObjectsToMake = Integer.parseInt(properties.getProperty("object_count"));
         MyNoteMarshaller myNoteMarshaller = new MyNoteMarshaller();      
         MyNotes myNotes = myNoteMarshaller.createMyNotes(numberOfObjectsToMake);
-        myNoteMarshaller.marshallCountriesAndWriteToFile(myNotes, inputURI);
+        myNoteMarshaller.marshallNotesAndWriteToFile(myNotes, inputURI);
         myNotes = myNoteMarshaller.unmarshallCountriesFromFile(inputURI);
-        myNoteMarshaller.marshallCountriesAndWriteToFile(myNotes, outputURI);
+        myNoteMarshaller.marshallNotesAndWriteToFile(myNotes, outputURI);
     }
 
-    private void marshallAndWrite() throws Exception {
+    private void marshallAndWriteCountries() throws Exception {
         properties.loadFromXML(App.class.getResourceAsStream("/jaxb.xml"));
         URI inputURI = new URI(properties.getProperty("input_uri"));
         URI outputURI = new URI(properties.getProperty("output_uri"));
