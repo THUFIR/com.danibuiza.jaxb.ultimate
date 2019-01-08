@@ -30,10 +30,10 @@ public class App {
         URI inputURI = new URI(properties.getProperty("input_uri"));
         URI outputURI = new URI(properties.getProperty("output_uri"));
         int numberOfCountriesToMake = Integer.parseInt(properties.getProperty("countries"));
-        CountryMarshaller ops = new CountryMarshaller();
-        countries = ops.getManyCountries(numberOfCountriesToMake);
-        ops.marshallCountriesAndWriteToFile(countries, inputURI);
-        countries = ops.unmarshallCountriesFromFile(inputURI);
-        ops.marshallCountriesAndWriteToFile(countries, outputURI);
+        CountryMarshaller countryMarshaller = new CountryMarshaller();
+        countries = countryMarshaller.getManyCountries(numberOfCountriesToMake);
+        countryMarshaller.marshallCountriesAndWriteToFile(countries, inputURI);
+        countries = countryMarshaller.unmarshallCountriesFromFile(inputURI);
+        countryMarshaller.marshallCountriesAndWriteToFile(countries, outputURI);
     }
 }

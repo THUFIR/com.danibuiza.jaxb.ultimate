@@ -1,0 +1,66 @@
+package net.bounceme.dur.jaxb.hello.world;
+
+import java.io.File;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import java.net.URI;
+import java.util.Random;
+import java.util.logging.Logger;
+import javax.xml.bind.Unmarshaller;
+
+public class NoteMarshaller {
+
+    private static final Logger LOG = Logger.getLogger(NoteMarshaller.class.getName());
+    private int min = 1;
+    private int max = 999;
+
+    public NoteMarshaller() {
+    }
+
+    public MyNotes getManyMyNotes(int max) throws Exception {
+        MyNotes myNotes = new MyNotes();
+        MyNote myNote = null;
+        for (int i = 0; i < max; i++) {
+            myNote = newFakeRandomMyNote();
+            myNotes.add(myNote);
+        }
+        return myNotes;
+    }
+
+    private MyNote newFakeRandomMyNote() throws Exception {
+        MyNote note = new MyNote();
+        return note;
+    }
+
+    private String randomString() {
+        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 18) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+        return saltStr;
+
+    }
+
+    public MyNotes unmarshallMyNotesFromFile(URI uri) throws Exception {
+        File file = new File(uri);
+        JAXBContext jaxbContext = JAXBContext.newInstance(MyNotes.class);
+        Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+        MyNotes myNotes = (MyNotes) jaxbUnmarshaller.unmarshal(file);
+        return myNotes;
+    }
+
+    public void marshallMyNotesAndWriteToFile(MyNotes notes, URI uri) throws Exception {
+        JAXBContext jaxbContext = JAXBContext.newInstance(MyNotes.class);
+        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        jaxbMarshaller.marshal(notes, new File(uri));
+        jaxbMarshaller.marshal(notes, System.out);
+
+    }
+
+}
