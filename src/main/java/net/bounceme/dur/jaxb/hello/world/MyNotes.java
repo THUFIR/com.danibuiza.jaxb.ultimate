@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "MyNotes")
+@XmlRootElement(name = "notes_collection")
 public class MyNotes {
 
     private static final Logger LOG = Logger.getLogger(MyNotes.class.getName());
@@ -21,7 +21,7 @@ public class MyNotes {
         return myNotes;
     }
 
-    @XmlElement(name = "Note")
+    @XmlElement(name = "each_note")
     public void setMyNotes(List<MyNote> myNotes) {
         LOG.info(myNotes.toString());
         this.myNotes = myNotes;
@@ -35,7 +35,7 @@ public class MyNotes {
     @Override
     public String toString() {
         StringBuffer str = new StringBuffer();
-        for (MyNote note : this.myNotes) {
+        for (MyNote note : myNotes) {
             str.append(note.toString());
         }
         return str.toString();

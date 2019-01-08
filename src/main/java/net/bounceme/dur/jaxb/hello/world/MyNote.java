@@ -61,7 +61,7 @@ public class MyNote {
 
     @Override
     public String toString() {
-        return note + to + from + heading + body;
+        return to + from + heading + body;
     }
 
 }
