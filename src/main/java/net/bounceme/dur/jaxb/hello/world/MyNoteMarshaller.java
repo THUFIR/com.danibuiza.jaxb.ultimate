@@ -47,7 +47,6 @@ public class MyNoteMarshaller {
         }
         String saltStr = salt.toString();
         return saltStr;
-
     }
 
     public MyNotes unmarshallMyNotesFromFile(URI uri) throws Exception {
@@ -64,22 +63,5 @@ public class MyNoteMarshaller {
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         jaxbMarshaller.marshal(notes, new File(uri));
         jaxbMarshaller.marshal(notes, System.out);
-    }
-
-    void marshallNotesAndWriteToFile(MyNotes myNotes, URI inputURI) throws Exception {
-        JAXBContext jaxbContext = JAXBContext.newInstance(MyNotes.class);
-        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        jaxbMarshaller.marshal(myNotes, new File(inputURI));
-        jaxbMarshaller.marshal(myNotes, System.out);
-    }
-
-    MyNotes unmarshallCountriesFromFile(URI inputURI) throws Exception {
-        File file = new File(inputURI);
-        JAXBContext jaxbContext = JAXBContext.newInstance(MyNotes.class);
-        Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-        MyNotes myNotes = (MyNotes) jaxbUnmarshaller.unmarshal(file);
-        return myNotes;
-
     }
 }

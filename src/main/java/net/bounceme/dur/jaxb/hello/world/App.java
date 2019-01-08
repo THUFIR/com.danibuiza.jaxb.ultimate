@@ -32,9 +32,9 @@ public class App {
         int numberOfObjectsToMake = Integer.parseInt(properties.getProperty("object_count"));
         MyNoteMarshaller myNoteMarshaller = new MyNoteMarshaller();      
         MyNotes myNotes = myNoteMarshaller.createMyNotes(numberOfObjectsToMake);
-        myNoteMarshaller.marshallNotesAndWriteToFile(myNotes, inputURI);
-        myNotes = myNoteMarshaller.unmarshallCountriesFromFile(inputURI);
-        myNoteMarshaller.marshallNotesAndWriteToFile(myNotes, outputURI);
+        myNoteMarshaller.marshallMyNotesAndWriteToFile(myNotes, inputURI);
+        myNotes = myNoteMarshaller.unmarshallMyNotesFromFile(inputURI);
+        myNoteMarshaller.marshallMyNotesAndWriteToFile(myNotes, outputURI);
     }
 
     private void marshallAndWriteCountries() throws Exception {
