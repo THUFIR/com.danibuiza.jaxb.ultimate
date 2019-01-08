@@ -22,7 +22,7 @@ public class App {
         URL inputURL = new URL(properties.getProperty("note"));
         HyperTextMarshaller hyperTextMarshaller = new HyperTextMarshaller();
         MyNote myNote = new MyNote();
-        hyperTextMarshaller.marshallXML2(myNote, inputURL, outputForHTML);
+        hyperTextMarshaller.marshallNote(myNote, inputURL, outputForHTML);
     }
 
     private void marshallAndWrite() throws Exception {
