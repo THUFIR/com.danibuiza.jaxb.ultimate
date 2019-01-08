@@ -4,10 +4,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
-/*
-<note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note>
- */
 @XmlType(propOrder = {"note", "to", "from", "heading", "body"})
 @XmlRootElement(name = "note")
 public class MyNote {
