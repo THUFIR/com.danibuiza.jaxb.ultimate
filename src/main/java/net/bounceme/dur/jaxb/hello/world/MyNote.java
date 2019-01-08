@@ -22,7 +22,7 @@ public class MyNote {
         return note;
     }
 
-    @XmlElement(name = "Country_Population")
+    @XmlElement(name = "note")
     public void setNote(String note) {
         this.note = note;
     }
@@ -31,7 +31,7 @@ public class MyNote {
         return to;
     }
 
-    @XmlElement(name = "Country_Population")
+    @XmlElement(name = "to")
     public void setTo(String to) {
         this.to = to;
     }
@@ -40,8 +40,7 @@ public class MyNote {
         return from;
     }
 
-    @XmlElement(name = "Country_Population")
-
+    @XmlElement(name = "from")
     public void setFrom(String from) {
         this.from = from;
     }
@@ -50,7 +49,7 @@ public class MyNote {
         return heading;
     }
 
-    @XmlElement(name = "Country_Population")
+    @XmlElement(name = "heading")
     public void setHeading(String heading) {
         this.heading = heading;
     }
@@ -59,7 +58,7 @@ public class MyNote {
         return body;
     }
 
-    @XmlElement(name = "Country_Population")
+    @XmlElement(name = "body")
     public void setBody(String body) {
         this.body = body;
     }
