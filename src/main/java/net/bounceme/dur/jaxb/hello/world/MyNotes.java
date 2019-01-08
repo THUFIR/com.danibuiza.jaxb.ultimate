@@ -21,7 +21,7 @@ public class MyNotes {
         return myNotes;
     }
 
-    @XmlElement(name = "each_note")
+    @XmlElement(name = "note")
     public void setMyNotes(List<MyNote> myNotes) {
         LOG.info(myNotes.toString());
         this.myNotes = myNotes;
