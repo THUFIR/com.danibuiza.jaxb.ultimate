@@ -1,27 +1,20 @@
 package net.bounceme.dur.jaxb.hello.world;
 
+import java.util.logging.Logger;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(propOrder = {"note", "to", "from", "heading", "body"})
+@XmlType(propOrder = {"to", "from", "heading", "body"})
 @XmlRootElement(name = "note")
 public class MyNote {
 
-    private String note;
+    private static final Logger LOG = Logger.getLogger(MyNotes.class.getName());
+
     private String to;
     private String from;
     private String heading;
     private String body;
-
-    public String getNote() {
-        return note;
-    }
-
-    @XmlElement(name = "note")
-    public void setNote(String note) {
-        this.note = note;
-    }
 
     public String getTo() {
         return to;

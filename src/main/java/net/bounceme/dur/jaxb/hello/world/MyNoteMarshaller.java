@@ -32,7 +32,6 @@ public class MyNoteMarshaller {
         note.setBody(randomString());
         note.setFrom(randomString());
         note.setHeading(randomString());
-        note.setNote(randomString());
         note.setTo(randomString());
         return note;
     }
