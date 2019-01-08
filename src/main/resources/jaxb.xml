@@ -4,7 +4,7 @@
     <entry key="input_uri">file:/home/thufir/jaxb/countries_input.xml</entry>
     <entry key="output_uri">file:/home/thufir/jaxb/countries_output.xml</entry>
     <entry key="output_html_to_uri">file:/home/thufir/jaxb/html_output.xml</entry>
-    <entry key="countries">1</entry>   
+    <entry key="object_count">99</entry>   
     <entry key="url">http://books.toscrape.com/</entry>
     <entry key="note">https://www.w3schools.com/xml/note.xml</entry>
     <entry key="kingfisher">http://www.kingfisher.org/</entry>

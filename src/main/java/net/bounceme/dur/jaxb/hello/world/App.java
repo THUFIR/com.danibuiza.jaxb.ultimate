@@ -10,7 +10,7 @@ public class App {
 
     private static final Logger LOG = Logger.getLogger(App.class.getName());
     private Properties properties = new Properties();
-    private Countries countries = null;
+    private Countries myNotes = null;
 
     public static void main(final String... args) throws Exception {
         new App().marshallAndWrite();
@@ -25,15 +25,27 @@ public class App {
         hyperTextMarshaller.unmarshallNote(myNote, inputURL, outputForHTML);
     }
 
+    private void marshallAndWriteNotes() throws Exception {
+        properties.loadFromXML(App.class.getResourceAsStream("/jaxb.xml"));
+        URI inputURI = new URI(properties.getProperty("input_uri"));
+        URI outputURI = new URI(properties.getProperty("output_uri"));
+        int numberOfObjectsToMake = Integer.parseInt(properties.getProperty("object_count"));
+        MyNoteMarshaller myNoteMarshaller = new MyNoteMarshaller();      
+        MyNotes myNotes = myNoteMarshaller.createMyNotes(numberOfObjectsToMake);
+        myNoteMarshaller.marshallCountriesAndWriteToFile(myNotes, inputURI);
+        myNotes = myNoteMarshaller.unmarshallCountriesFromFile(inputURI);
+        myNoteMarshaller.marshallCountriesAndWriteToFile(myNotes, outputURI);
+    }
+
     private void marshallAndWrite() throws Exception {
         properties.loadFromXML(App.class.getResourceAsStream("/jaxb.xml"));
         URI inputURI = new URI(properties.getProperty("input_uri"));
         URI outputURI = new URI(properties.getProperty("output_uri"));
-        int numberOfCountriesToMake = Integer.parseInt(properties.getProperty("countries"));
+        int numberOfCountriesToMake = Integer.parseInt(properties.getProperty("object_count"));
         CountryMarshaller countryMarshaller = new CountryMarshaller();
-        countries = countryMarshaller.getManyCountries(numberOfCountriesToMake);
-        countryMarshaller.marshallCountriesAndWriteToFile(countries, inputURI);
-        countries = countryMarshaller.unmarshallCountriesFromFile(inputURI);
-        countryMarshaller.marshallCountriesAndWriteToFile(countries, outputURI);
+        myNotes = countryMarshaller.getManyCountries(numberOfCountriesToMake);
+        countryMarshaller.marshallCountriesAndWriteToFile(myNotes, inputURI);
+        myNotes = countryMarshaller.unmarshallCountriesFromFile(inputURI);
+        countryMarshaller.marshallCountriesAndWriteToFile(myNotes, outputURI);
     }
 }

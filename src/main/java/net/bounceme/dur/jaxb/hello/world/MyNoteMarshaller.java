@@ -1,5 +1,6 @@
 package net.bounceme.dur.jaxb.hello.world;
 
+import com.danibuiza.jaxb.ultimate.business.Countries;
 import java.io.File;
 
 import javax.xml.bind.JAXBContext;
@@ -7,18 +8,19 @@ import javax.xml.bind.Marshaller;
 import java.net.URI;
 import java.util.Random;
 import java.util.logging.Logger;
+import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-public class NoteMarshaller {
+public class MyNoteMarshaller {
 
-    private static final Logger LOG = Logger.getLogger(NoteMarshaller.class.getName());
+    private static final Logger LOG = Logger.getLogger(MyNoteMarshaller.class.getName());
     private int min = 1;
     private int max = 999;
 
-    public NoteMarshaller() {
+    public MyNoteMarshaller() {
     }
 
-    public MyNotes getManyMyNotes(int max) throws Exception {
+    public MyNotes createMyNotes(int max) throws Exception {
         MyNotes myNotes = new MyNotes();
         MyNote myNote = null;
         for (int i = 0; i < max; i++) {
@@ -30,6 +32,11 @@ public class NoteMarshaller {
 
     private MyNote newFakeRandomMyNote() throws Exception {
         MyNote note = new MyNote();
+        note.setBody(randomString());
+        note.setFrom(randomString());
+        note.setHeading(randomString());
+        note.setNote(randomString());
+        note.setTo(randomString());
         return note;
     }
 
@@ -60,7 +67,24 @@ public class NoteMarshaller {
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         jaxbMarshaller.marshal(notes, new File(uri));
         jaxbMarshaller.marshal(notes, System.out);
+    }
+
+    void marshallCountriesAndWriteToFile(MyNotes myNotes, URI inputURI) throws Exception {
+        JAXBContext jaxbContext = JAXBContext.newInstance(MyNotes.class);
+        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        jaxbMarshaller.marshal(myNotes, new File(inputURI));
+        jaxbMarshaller.marshal(myNotes, System.out);
 
     }
 
+    MyNotes unmarshallCountriesFromFile(URI inputURI) throws Exception {
+        File file = new File(inputURI);
+        JAXBContext jaxbContext = JAXBContext.newInstance(MyNotes.class);
+        Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+        MyNotes myNotes = (MyNotes) jaxbUnmarshaller.unmarshal(file);
+        return myNotes;
+
+    }
 }
+
