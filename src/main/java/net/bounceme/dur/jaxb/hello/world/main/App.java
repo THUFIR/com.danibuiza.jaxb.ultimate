@@ -22,7 +22,7 @@ public class App {
         URI inputURI = new URI(properties.getProperty("input_books_file_to_uri"));
         URI outputURI = new URI(properties.getProperty("output_books_file_to_uri"));
         BooksMarshaller booksMarshaller = new BooksMarshaller();
-        booksMarshaller.doMagic();
+        booksMarshaller.createNewLibraryFromScratch(3,4);
     }
 
     private void html() throws Exception {
@@ -40,7 +40,7 @@ public class App {
         URI outputURI = new URI(properties.getProperty("output_uri"));
         int numberOfObjectsToMake = Integer.parseInt(properties.getProperty("object_count"));
         MyNoteMarshaller myNoteMarshaller = new MyNoteMarshaller();
-        MyNotes myNotes = myNoteMarshaller.createMyNotes(numberOfObjectsToMake);
+        Library myNotes = myNoteMarshaller.createMyNotes(numberOfObjectsToMake);
         myNoteMarshaller.marshallMyNotesAndWriteToFile(myNotes, inputURI);
         myNotes = myNoteMarshaller.unmarshallMyNotesFromFile(inputURI);
         myNoteMarshaller.marshallMyNotesAndWriteToFile(myNotes, outputURI);

@@ -8,9 +8,17 @@ public class Endowment {
 
     private static final Logger LOG = Logger.getLogger(Endowment.class.getName());
 
-    private final String donor = null;
+    private String donor = null;
     private final List<Book> book = new ArrayList<>();
 
-    public Endowment() {
+    private Endowment() {
+    }
+
+    public Endowment(String donor) {
+        this.donor = donor;
+    }
+
+    void add(Book b) {
+        book.add(b);
     }
 }

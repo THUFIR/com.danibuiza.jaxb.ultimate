@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "note")
 public class MyNote {
 
-    private static final Logger LOG = Logger.getLogger(MyNotes.class.getName());
+    private static final Logger LOG = Logger.getLogger(Library.class.getName());
 
     private String to;
     private String from;

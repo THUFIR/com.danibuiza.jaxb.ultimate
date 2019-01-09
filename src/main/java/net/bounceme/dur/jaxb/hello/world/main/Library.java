@@ -7,13 +7,17 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "notes_collection")
-public class MyNotes {
+public class Library {
 
-    private static final Logger LOG = Logger.getLogger(MyNotes.class.getName());
+    private static final Logger LOG = Logger.getLogger(Library.class.getName());
 
     private List<MyNote> myNotes = new ArrayList<>();
 
-    public MyNotes() {
+    public Library() {
+    }
+
+    public Library(String toString) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public List<MyNote> getMyNotes() {

@@ -17,8 +17,8 @@ public class MyNoteMarshaller {
     public MyNoteMarshaller() {
     }
 
-    public MyNotes createMyNotes(int max) throws Exception {
-        MyNotes myNotes = new MyNotes();
+    public Library createMyNotes(int max) throws Exception {
+        Library myNotes = new Library();
         MyNote myNote = null;
         for (int i = 0; i < max; i++) {
             myNote = newFakeRandomMyNote();
@@ -48,16 +48,16 @@ public class MyNoteMarshaller {
         return saltStr;
     }
 
-    public MyNotes unmarshallMyNotesFromFile(URI uri) throws Exception {
+    public Library unmarshallMyNotesFromFile(URI uri) throws Exception {
         File file = new File(uri);
-        JAXBContext jaxbContext = JAXBContext.newInstance(MyNotes.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Library.class);
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-        MyNotes myNotes = (MyNotes) jaxbUnmarshaller.unmarshal(file);
+        Library myNotes = (Library) jaxbUnmarshaller.unmarshal(file);
         return myNotes;
     }
 
-    public void marshallMyNotesAndWriteToFile(MyNotes notes, URI uri) throws Exception {
-        JAXBContext jaxbContext = JAXBContext.newInstance(MyNotes.class);
+    public void marshallMyNotesAndWriteToFile(Library notes, URI uri) throws Exception {
+        JAXBContext jaxbContext = JAXBContext.newInstance(Library.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         jaxbMarshaller.marshal(notes, new File(uri));
