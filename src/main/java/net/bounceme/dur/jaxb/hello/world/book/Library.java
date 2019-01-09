@@ -26,10 +26,10 @@ public class Library {
     }
 
     @XmlElement(name = "endowment")
-    public void setMyNotes(List<Endowment> endowment) {
+    public void setEndowments(List<Endowment> endowment) {
         endowments = endowment;
     }
-
+    
     public void add(Endowment e) {
         endowments.add(e);
     }
