@@ -23,8 +23,8 @@ public class App {
         URI inputURI = new URI(properties.getProperty("input_books_file_to_uri"));
         URI outputURI = new URI(properties.getProperty("output_books_file_to_uri"));
         BooksMarshaller booksMarshaller = new BooksMarshaller();
-        net.bounceme.dur.jaxb.hello.world.book.Library library = booksMarshaller.createNewLibraryFromScratch(3,4);
-        booksMarshaller.marshallMyNotesAndWriteToFile(library, outputURI);
+        Library library = booksMarshaller.createNewLibraryFromScratch(3,4);
+        booksMarshaller.marshallLibraryAndWriteToURI(library, outputURI);
     }
 
     private void html() throws Exception {

@@ -52,7 +52,8 @@ public class BooksMarshaller {
         return l;
     }
 
-    public void marshallMyNotesAndWriteToFile(Library library, URI uri) throws Exception {
+    public void marshallLibraryAndWriteToURI(Library library, URI uri) throws Exception {
+        LOG.info(library.toString());
         JAXBContext jaxbContext = JAXBContext.newInstance(Library.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
