@@ -7,6 +7,7 @@ import java.net.URI;
 import java.util.Random;
 import java.util.logging.Logger;
 import javax.xml.bind.Unmarshaller;
+import net.bounceme.dur.jaxb.hello.world.book.Library;
 
 public class MyNoteMarshaller {
 
@@ -17,8 +18,8 @@ public class MyNoteMarshaller {
     public MyNoteMarshaller() {
     }
 
-    public Library createMyNotes(int max) throws Exception {
-        Library myNotes = new Library();
+    public MyNotes createMyNotes(int max) throws Exception {
+        MyNotes myNotes = new MyNotes("abc");
         MyNote myNote = null;
         for (int i = 0; i < max; i++) {
             myNote = newFakeRandomMyNote();
@@ -48,11 +49,11 @@ public class MyNoteMarshaller {
         return saltStr;
     }
 
-    public Library unmarshallMyNotesFromFile(URI uri) throws Exception {
+    public MyNotes unmarshallMyNotesFromFile(URI uri) throws Exception {
         File file = new File(uri);
-        JAXBContext jaxbContext = JAXBContext.newInstance(Library.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(MyNotes.class);
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-        Library myNotes = (Library) jaxbUnmarshaller.unmarshal(file);
+        MyNotes myNotes = (MyNotes) jaxbUnmarshaller.unmarshal(file);
         return myNotes;
     }
 

@@ -18,7 +18,7 @@ public class Endowment {
         this.donor = donor;
     }
 
-    void add(Book b) {
+    public void add(Book b) {
         books.add(b);
     }
 

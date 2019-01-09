@@ -1,4 +1,4 @@
-package net.bounceme.dur.jaxb.hello.world.book;
+package net.bounceme.dur.jaxb.hello.world.main;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,37 +7,37 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "notes_collection")
-public class Library {
+public class MyNotes {
 
-    private static final Logger LOG = Logger.getLogger(Library.class.getName());
+    private static final Logger LOG = Logger.getLogger(MyNotes.class.getName());
 
     private String name = null;
-    private List<Endowment> endowments = new ArrayList<>();
+    private List<MyNote> myNotes = new ArrayList<>();
 
-    private Library() {
+    private MyNotes() {
     }
 
-    public Library(String name) {
+    public MyNotes(String name) {
         this.name = name;
     }
 
-    public List<Endowment> getEndowments() {
-        return endowments;
+    public List<MyNote> getEndowments() {
+        return myNotes;
     }
 
     @XmlElement(name = "endowment")
-    public void setMyNotes(List<Endowment> endowment) {
-        endowments = endowment;
+    public void setMyNotes(List<MyNote> endowment) {
+        myNotes = endowment;
     }
 
-    public void add(Endowment e) {
-        endowments.add(e);
+    public void add(MyNote e) {
+        myNotes.add(e);
     }
 
     @Override
     public String toString() {
         StringBuffer str = new StringBuffer();
-        for (Endowment e : endowments) {
+        for (MyNote e : myNotes) {
             str.append(e.toString());
         }
         return str.toString();

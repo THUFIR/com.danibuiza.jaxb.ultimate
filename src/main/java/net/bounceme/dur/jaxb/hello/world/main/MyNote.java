@@ -1,5 +1,6 @@
 package net.bounceme.dur.jaxb.hello.world.main;
 
+import net.bounceme.dur.jaxb.hello.world.book.Library;
 import java.util.logging.Logger;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
