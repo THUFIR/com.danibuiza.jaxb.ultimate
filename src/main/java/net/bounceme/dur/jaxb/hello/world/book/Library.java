@@ -14,12 +14,16 @@ public class Library {
     private static final Logger LOG = Logger.getLogger(Library.class.getName());
 
     private String name = null;
-    private final List<Endowment> e = new ArrayList<>();
+    private final List<Endowment> endowments = new ArrayList<>();
 
     private Library() {
     }
 
     public Library(String name) {
         this.name = name;
+    }
+
+    void add(Endowment endowment) {
+        endowments.add(endowment);
     }
 }

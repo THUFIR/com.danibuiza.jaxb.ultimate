@@ -9,7 +9,7 @@ public class Endowment {
     private static final Logger LOG = Logger.getLogger(Endowment.class.getName());
 
     private String donor = null;
-    private final List<Book> book = new ArrayList<>();
+    private final List<Book> books = new ArrayList<>();
 
     private Endowment() {
     }
@@ -19,6 +19,16 @@ public class Endowment {
     }
 
     void add(Book b) {
-        book.add(b);
+        books.add(b);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(new String(""));
+        books.forEach((b) -> {
+            sb.append(b.toString());
+        });
+        return sb.toString();
     }
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.logging.Logger;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import net.bounceme.dur.jaxb.hello.world.book.Endowment;
 
 @XmlRootElement(name = "notes_collection")
 public class Library {
@@ -43,6 +44,10 @@ public class Library {
             str.append(note.toString());
         }
         return str.toString();
+    }
+
+    public void add(Endowment e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

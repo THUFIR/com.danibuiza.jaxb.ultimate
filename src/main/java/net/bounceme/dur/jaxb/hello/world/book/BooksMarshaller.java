@@ -2,12 +2,10 @@ package net.bounceme.dur.jaxb.hello.world.book;
 
 import java.io.File;
 import java.net.URI;
-import java.util.Date;
 import java.util.Random;
 import java.util.logging.Logger;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
-import net.bounceme.dur.jaxb.hello.world.main.Library;
 
 public class BooksMarshaller {
 
@@ -16,13 +14,15 @@ public class BooksMarshaller {
 //    private Endowment e = null;//new Endowment();
 //    private Library l = nnew Library();
 
+    private String a = "abcdefghijklmnopqrstuvwyz";
+    private String n = "abcdefghijklmnopqrstuvwyz";
+
     public BooksMarshaller() {
     }
 
     private Book newFakeRandomBook() throws Exception {
-        Book b = new Book();
-        b.setIsbn(newRandomString("0123456789"));
-        b.setTitle(newRandomString("abcdefghijklmnopqrstuvwxyz"));
+        Book b = new Book(newRandomString(n));
+        b.setTitle(newRandomString(a));
         return b;
     }
 
@@ -37,20 +37,22 @@ public class BooksMarshaller {
         return saltStr;
     }
 
-    public void createNewLibraryFromScratch(int bmax, int emax) throws Exception {
+    public Library createNewLibraryFromScratch(int bmax, int emax) throws Exception {
         Book b = null;//newFakeRandomBook();
         Endowment e = null;//new Endowment();
-        Library l = new Library(new Date().toString());
 
+        Library l = new Library(newRandomString(a));
         for (int j = 0; j < emax; j++) {
-            e = new Endowment(newRandomString("ABCDEFGHIJKLMNOPQRSTUVWXY"));
+            e = new Endowment(newRandomString(a));
             for (int i = 0; i < bmax; i++) {
                 b = newFakeRandomBook();
+                LOG.info(b.toString());
                 e.add(b);
             }
+            LOG.info(e.toString());
+            l.add(e);
         }
-
-        LOG.info(b.toString());
+        return l;
     }
 
     public void marshallMyNotesAndWriteToFile(Library library, URI uri) throws Exception {

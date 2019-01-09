@@ -18,14 +18,18 @@ public class Book {
     private String isbn;
     private String title;
 
-    public Book() {
+    private Book() {
+    }
+
+    public Book(String isbn) {
+        this.isbn = isbn;
     }
 
     public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(String isbn) {
+    private void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
