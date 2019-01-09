@@ -10,12 +10,9 @@ import javax.xml.bind.Marshaller;
 public class BooksMarshaller {
 
     private static final Logger LOG = Logger.getLogger(BooksMarshaller.class.getName());
-//    private Book b = new Book();
-//    private Endowment e = null;//new Endowment();
-//    private Library l = nnew Library();
 
     private String a = "abcdefghijklmnopqrstuvwyz";
-    private String n = "abcdefghijklmnopqrstuvwyz";
+    private String n = "0123456789";
 
     public BooksMarshaller() {
     }
@@ -46,10 +43,10 @@ public class BooksMarshaller {
             e = new Endowment(newRandomString(a));
             for (int i = 0; i < bmax; i++) {
                 b = newFakeRandomBook();
-                LOG.info(b.toString());
+                LOG.fine(b.toString());
                 e.add(b);
             }
-            LOG.info(e.toString());
+            LOG.fine(e.toString());
             l.add(e);
         }
         return l;
