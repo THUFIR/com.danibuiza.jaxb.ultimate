@@ -1,4 +1,4 @@
-package net.bounceme.dur.jaxb.hello.world;
+package net.bounceme.dur.jaxb.hello.world.main;
 
 import com.danibuiza.jaxb.ultimate.business.Countries;
 import java.net.URI;

@@ -1,4 +1,4 @@
-package net.bounceme.dur.jaxb.hello.world;
+package net.bounceme.dur.jaxb.hello.world.main;
 
 import java.io.File;
 import javax.xml.bind.JAXBContext;

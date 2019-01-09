@@ -1,4 +1,4 @@
-package net.bounceme.dur.jaxb.hello.world;
+package net.bounceme.dur.jaxb.hello.world.main;
 
 import java.util.logging.Logger;
 import javax.xml.bind.annotation.XmlElement;
