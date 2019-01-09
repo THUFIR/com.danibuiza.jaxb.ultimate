@@ -1,4 +1,4 @@
-package net.bounceme.dur.jaxb.hello.world.foo;
+package net.bounceme.dur.jaxb.hello.world.book;
 
 import java.util.ArrayList;
 import java.util.List;

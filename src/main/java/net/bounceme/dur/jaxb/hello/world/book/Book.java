@@ -1,4 +1,4 @@
-package net.bounceme.dur.jaxb.hello.world.foo;
+package net.bounceme.dur.jaxb.hello.world.book;
 
 import java.util.logging.Logger;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -19,6 +19,26 @@ public class Book {
     private String title;
 
     public Book() {
+    }
 
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return getTitle() + getIsbn();
     }
 }

@@ -1,5 +1,6 @@
 package net.bounceme.dur.jaxb.hello.world.main;
 
+import net.bounceme.dur.jaxb.hello.world.book.BooksMarshaller;
 import com.danibuiza.jaxb.ultimate.business.Countries;
 import java.net.URI;
 import java.net.URL;
@@ -18,11 +19,10 @@ public class App {
 
     private void books() throws Exception {
         properties.loadFromXML(App.class.getResourceAsStream("/jaxb.xml"));
-        URI outputForHTML = new URI(properties.getProperty("output_html_to_uri"));
-        URL inputURL = new URL(properties.getProperty("note"));
-        MyUnmarshaller hyperTextMarshaller = new MyUnmarshaller();
-        MyNote myNote = new MyNote();
-        hyperTextMarshaller.unmarshallNote(myNote, inputURL, outputForHTML);
+        URI inputURI = new URI(properties.getProperty("input_books_file_to_uri"));
+        URI outputURI = new URI(properties.getProperty("output_books_file_to_uri"));
+        BooksMarshaller booksMarshaller = new BooksMarshaller();
+        booksMarshaller.doMagic();
     }
 
     private void html() throws Exception {
@@ -39,7 +39,7 @@ public class App {
         URI inputURI = new URI(properties.getProperty("input_uri"));
         URI outputURI = new URI(properties.getProperty("output_uri"));
         int numberOfObjectsToMake = Integer.parseInt(properties.getProperty("object_count"));
-        MyNoteMarshaller myNoteMarshaller = new MyNoteMarshaller();      
+        MyNoteMarshaller myNoteMarshaller = new MyNoteMarshaller();
         MyNotes myNotes = myNoteMarshaller.createMyNotes(numberOfObjectsToMake);
         myNoteMarshaller.marshallMyNotesAndWriteToFile(myNotes, inputURI);
         myNotes = myNoteMarshaller.unmarshallMyNotesFromFile(inputURI);

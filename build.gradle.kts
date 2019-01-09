@@ -34,7 +34,7 @@ dependencies {
 }
 
 application {
-      mainClassName = "net.bounceme.dur.jaxb.hello.world.App";
+      mainClassName = "net.bounceme.dur.jaxb.hello.world.main.App";
 }
 
 val test by tasks.getting(Test::class) {
