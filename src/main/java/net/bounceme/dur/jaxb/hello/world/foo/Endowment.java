@@ -2,7 +2,6 @@ package net.bounceme.dur.jaxb.hello.world.foo;
 
 import java.util.ArrayList;
 import java.util.List;
-import net.bounceme.dur.jaxb.hello.world.main.*;
 import java.util.logging.Logger;
 
 public class Endowment {
