@@ -10,14 +10,14 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = {"uniqueID","subjects"})
+@XmlType(propOrder = {"uniqueID", "subjects"})
 public class Subjects {
 
     private static final Logger LOG = Logger.getLogger(Subjects.class.getName());
 
     @XmlAttribute
     private String uniqueID;
-    
+
     @XmlElement
     private List<Subject> subjects = new ArrayList<>();
 
@@ -44,6 +44,5 @@ public class Subjects {
     void add(Subject subject) {
         subjects.add(subject);
     }
-    
-    
+
 }
