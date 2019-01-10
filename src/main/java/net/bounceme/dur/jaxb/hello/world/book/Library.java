@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "notes_collection")
+@XmlRootElement
 public class Library {
 
     private static final Logger LOG = Logger.getLogger(Library.class.getName());
@@ -24,12 +24,10 @@ public class Library {
         this.name = name;
     }
 
-    @XmlElement(name = "endowment")
     public List<Endowment> getEndowments() {
         return endowments;
     }
 
-    @XmlElement(name = "endowment")
     public void setEndowments(List<Endowment> endowment) {
         endowments = endowment;
     }
