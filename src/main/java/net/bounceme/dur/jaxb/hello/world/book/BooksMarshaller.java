@@ -15,7 +15,7 @@ public class BooksMarshaller {
     public BooksMarshaller() {
     }
 
-    public Library createNewLibraryFromScratch(int amax, int bmax, int emax) throws Exception {
+    public Library createNewLibraryFromScratch(int authorMax, int bookMax, int EndowmentMax) throws Exception {
         Book book = null;
         Endowment endowment = null;
         Author author = null;
@@ -23,17 +23,17 @@ public class BooksMarshaller {
         Subject subject = null;
 
         Library l = builder.newLib();
-        for (int j = 0; j < emax; j++) {
+        for (int j = 0; j < EndowmentMax; j++) {
             endowment = builder.newEndow();
-            for (int i = 0; i < bmax; i++) {
+            for (int i = 0; i < bookMax; i++) {
                 book = builder.newBook();
-                for (int k = 0; k < amax; k++) {
+                for (int k = 0; k < authorMax; k++) {
                     author = builder.newAuthor();
                     book.add(author);
                 }
-                for (int k = 0; k < amax; k++) {
+                for (int k = 0; k < authorMax; k++) {
                     subjects = builder.newSubjects();
-                    for (int x = 0; x < amax; x++) {
+                    for (int x = 0; x < authorMax; x++) {
                         subject = builder.newSubject();
                         subjects.add(subject);
                     }
@@ -48,7 +48,15 @@ public class BooksMarshaller {
         return l;
     }
 
-    public void marshallLibraryAndWriteToURI(Library library, URI uri) throws Exception {
+    public void marshal(Library library, URI uri) throws Exception {
+        LOG.info(library.toString());
+        JAXBContext jaxbContext = JAXBContext.newInstance(Library.class);
+        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        jaxbMarshaller.marshal(library, new File(uri));
+        jaxbMarshaller.marshal(library, System.out);
+    }
+    public void unmarshal(Library library, URI uri) throws Exception {
         LOG.info(library.toString());
         JAXBContext jaxbContext = JAXBContext.newInstance(Library.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();

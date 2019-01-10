@@ -24,7 +24,7 @@ public class App {
         URI outputURI = new URI(properties.getProperty("output_books_file_to_uri"));
         BooksMarshaller booksMarshaller = new BooksMarshaller();
         Library library = booksMarshaller.createNewLibraryFromScratch(2, 3, 4);
-        booksMarshaller.marshallLibraryAndWriteToURI(library, outputURI);
+        booksMarshaller.marshal(library, outputURI);
     }
 
     private void html() throws Exception {
