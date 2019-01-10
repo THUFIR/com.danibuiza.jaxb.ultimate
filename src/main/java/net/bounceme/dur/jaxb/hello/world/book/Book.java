@@ -4,11 +4,9 @@ import java.util.logging.Logger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
-@XmlType(propOrder = {"isbn", "title"})
-@XmlRootElement(name = "book")
+//@XmlType(propOrder = {"isbn", "title"})
+//@XmlRootElement(name = "book")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Book {
 

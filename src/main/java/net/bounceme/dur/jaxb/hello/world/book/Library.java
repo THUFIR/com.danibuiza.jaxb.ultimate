@@ -3,9 +3,12 @@ package net.bounceme.dur.jaxb.hello.world.book;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "notes_collection")
 public class Library {
 
@@ -21,6 +24,7 @@ public class Library {
         this.name = name;
     }
 
+    @XmlElement(name = "endowment")
     public List<Endowment> getEndowments() {
         return endowments;
     }
@@ -29,7 +33,7 @@ public class Library {
     public void setEndowments(List<Endowment> endowment) {
         endowments = endowment;
     }
-    
+
     public void add(Endowment e) {
         endowments.add(e);
     }
