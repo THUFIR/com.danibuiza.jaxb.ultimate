@@ -6,24 +6,41 @@ import java.util.logging.Logger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(propOrder = {"isbn", "title","authors"})
+@XmlType(propOrder = {"isbn", "title", "authors", "subjects"})
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Book {
 
     private static final Logger LOG = Logger.getLogger(Book.class.getName());
 
-    @XmlAttribute(name = "isbn")
+    @XmlAttribute
     private String isbn;
+
+    @XmlElement
     private String title;
+
+    @XmlElement
     private List<Author> authors = new ArrayList<>();
+
+    @XmlElement
+    private Subjects subjects = null;
 
     private Book() {
     }
 
     public Book(String isbn) {
         this.isbn = isbn;
+    }
+
+    @Override
+    public String toString() {
+        return getTitle() + getIsbn();
+    }
+
+    void add(Author author) {
+        getAuthors().add(author);
     }
 
     public String getIsbn() {
@@ -50,16 +67,12 @@ public class Book {
         this.authors = authors;
     }
 
-    @Override
-    public String toString() {
-        return getTitle() + getIsbn();
+    public Subjects getSubjects() {
+        return subjects;
     }
 
-    void add(Author author) {
-        authors.add(author);
+    public void setSubjects(Subjects subjects) {
+        this.subjects = subjects;
     }
 
-    Library newRandomLibrary() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

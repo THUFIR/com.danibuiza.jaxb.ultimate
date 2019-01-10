@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -14,9 +15,10 @@ public class Subjects {
 
     private static final Logger LOG = Logger.getLogger(Subjects.class.getName());
 
-    @XmlAttribute(name = "unique_id")
+    @XmlAttribute
     private String uniqueID;
     
+    @XmlElement
     private List<Subject> subjects = new ArrayList<>();
 
     Subjects(String uniqueID) {

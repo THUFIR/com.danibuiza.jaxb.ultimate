@@ -2,7 +2,6 @@ package net.bounceme.dur.jaxb.hello.world.book;
 
 import java.io.File;
 import java.net.URI;
-import java.util.Random;
 import java.util.logging.Logger;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
@@ -11,31 +10,26 @@ public class BooksMarshaller {
 
     private static final Logger LOG = Logger.getLogger(BooksMarshaller.class.getName());
 
-    private String alpha = "abcdefghijklmnopqrstuvwyz";
-    private String numeric = "0123456789";
     private Builder builder = new Builder();
 
     public BooksMarshaller() {
     }
 
-
-    
-
     public Library createNewLibraryFromScratch(int amax, int bmax, int emax) throws Exception {
-        Book b = null;//newFakeRandomBook();
-        Endowment e = null;//new Endowment();
+        Book book = null;
+        Endowment endowment = null;
         Author author = null;
         Subjects subjects = null;
         Subject subject = null;
 
         Library l = builder.newLib();
         for (int j = 0; j < emax; j++) {
-            e = builder.newEndow();
+            endowment = builder.newEndow();
             for (int i = 0; i < bmax; i++) {
-                b = builder.newBook();
+                book = builder.newBook();
                 for (int k = 0; k < amax; k++) {
                     author = builder.newAuthor();
-                    b.add(author);
+                    book.add(author);
                 }
                 for (int k = 0; k < amax; k++) {
                     subjects = builder.newSubjects();
@@ -43,13 +37,13 @@ public class BooksMarshaller {
                         subject = builder.newSubject();
                         subjects.add(subject);
                     }
-
+                  //  b.setSubjects(subjects);
                 }
-                LOG.fine(b.toString());
-                e.add(b);
+                LOG.fine(book.toString());
+                endowment.add(book);
             }
-            LOG.fine(e.toString());
-            l.add(e);
+            LOG.fine(endowment.toString());
+            l.add(endowment);
         }
         return l;
     }
