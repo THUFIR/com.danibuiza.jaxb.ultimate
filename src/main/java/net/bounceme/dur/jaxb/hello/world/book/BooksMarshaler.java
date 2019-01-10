@@ -3,16 +3,17 @@ package net.bounceme.dur.jaxb.hello.world.book;
 import java.io.File;
 import java.net.URI;
 import java.util.logging.Logger;
+import javax.xml.bind.JAXB;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 
-public class BooksMarshaller {
+public class BooksMarshaler {
 
-    private static final Logger LOG = Logger.getLogger(BooksMarshaller.class.getName());
+    private static final Logger LOG = Logger.getLogger(BooksMarshaler.class.getName());
 
     private Builder builder = new Builder();
 
-    public BooksMarshaller() {
+    public BooksMarshaler() {
     }
 
     public Library createNewLibraryFromScratch(int authorMax, int bookMax, int EndowmentMax) throws Exception {
@@ -56,13 +57,12 @@ public class BooksMarshaller {
         jaxbMarshaller.marshal(library, new File(uri));
         jaxbMarshaller.marshal(library, System.out);
     }
-    public void unmarshal(Library library, URI uri) throws Exception {
-        LOG.info(library.toString());
-        JAXBContext jaxbContext = JAXBContext.newInstance(Library.class);
-        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        jaxbMarshaller.marshal(library, new File(uri));
-        jaxbMarshaller.marshal(library, System.out);
+
+    public Library unmarshal(URI uri) throws Exception {
+        LOG.info(uri.toString());
+        File file = new File(uri);
+        Library library = JAXB.unmarshal(file, Library.class);
+        return library;
     }
 
 }

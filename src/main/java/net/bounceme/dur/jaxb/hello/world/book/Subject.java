@@ -15,8 +15,12 @@ public class Subject {
     @XmlAttribute(name = "unique_id")
     private String uniqueID;
 
-    Subject(String uniqueID) {
+    public Subject() {
+        uniqueID = "ggggrrrrr";
+    }
+
+    public Subject(String uniqueID) {
         this.uniqueID = uniqueID;
     }
-    
+
 }

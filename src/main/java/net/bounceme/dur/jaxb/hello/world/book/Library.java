@@ -16,7 +16,7 @@ public class Library {
     private String name = null;
     private List<Endowment> endowments = new ArrayList<>();
 
-    private Library() {
+    public Library() {
     }
 
     public Library(String name) {

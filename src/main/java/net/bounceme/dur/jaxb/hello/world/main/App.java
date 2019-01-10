@@ -1,7 +1,7 @@
 package net.bounceme.dur.jaxb.hello.world.main;
 
 import net.bounceme.dur.jaxb.hello.world.book.Library;
-import net.bounceme.dur.jaxb.hello.world.book.BooksMarshaller;
+import net.bounceme.dur.jaxb.hello.world.book.BooksMarshaler;
 import com.danibuiza.jaxb.ultimate.business.Countries;
 import java.net.URI;
 import java.net.URL;
@@ -15,14 +15,23 @@ public class App {
     private Countries myNotes = null;
 
     public static void main(final String... args) throws Exception {
-        new App().books();
+        new App().readBooksFromFile();
     }
 
-    private void books() throws Exception {
+    private void readBooksFromFile() throws Exception {
         properties.loadFromXML(App.class.getResourceAsStream("/jaxb.xml"));
         URI inputURI = new URI(properties.getProperty("input_books_file_to_uri"));
         URI outputURI = new URI(properties.getProperty("output_books_file_to_uri"));
-        BooksMarshaller booksMarshaller = new BooksMarshaller();
+        BooksMarshaler bm = new BooksMarshaler();
+        Library library = bm.unmarshal(outputURI);
+        LOG.info(library.toString());
+    }
+
+    private void writeBooks() throws Exception {
+        properties.loadFromXML(App.class.getResourceAsStream("/jaxb.xml"));
+        URI inputURI = new URI(properties.getProperty("input_books_file_to_uri"));
+        URI outputURI = new URI(properties.getProperty("output_books_file_to_uri"));
+        BooksMarshaler booksMarshaller = new BooksMarshaler();
         Library library = booksMarshaller.createNewLibraryFromScratch(2, 3, 4);
         booksMarshaller.marshal(library, outputURI);
     }

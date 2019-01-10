@@ -21,7 +21,10 @@ public class Subjects {
     @XmlElement
     private List<Subject> subjects = new ArrayList<>();
 
-    Subjects(String uniqueID) {
+    public Subjects() {
+    }
+
+    public Subjects(String uniqueID) {
         this.uniqueID = uniqueID;
     }
 
