@@ -11,15 +11,22 @@ public class BooksMarshaller {
 
     private static final Logger LOG = Logger.getLogger(BooksMarshaller.class.getName());
 
-    private String a = "abcdefghijklmnopqrstuvwyz";
-    private String n = "0123456789";
+    private String alpha = "abcdefghijklmnopqrstuvwyz";
+    private String numeric = "0123456789";
 
     public BooksMarshaller() {
     }
 
+    private Author newFakeRandomAuthor() throws Exception {
+        Author a = new Author(newRandomString(numeric));
+        a.setFirst(newRandomString(alpha));
+        a.setLast(newRandomString(alpha));
+        return a;
+    }
+
     private Book newFakeRandomBook() throws Exception {
-        Book b = new Book(newRandomString(n));
-        b.setTitle(newRandomString(a));
+        Book b = new Book(newRandomString(numeric));
+        b.setTitle(newRandomString(alpha));
         return b;
     }
 
@@ -34,15 +41,20 @@ public class BooksMarshaller {
         return saltStr;
     }
 
-    public Library createNewLibraryFromScratch(int bmax, int emax) throws Exception {
+    public Library createNewLibraryFromScratch(int amax, int bmax, int emax) throws Exception {
         Book b = null;//newFakeRandomBook();
         Endowment e = null;//new Endowment();
+        Author author = null;
 
-        Library l = new Library(newRandomString(a));
+        Library l = new Library(newRandomString(alpha));
         for (int j = 0; j < emax; j++) {
-            e = new Endowment(newRandomString(a));
+            e = new Endowment(newRandomString(alpha));
             for (int i = 0; i < bmax; i++) {
                 b = newFakeRandomBook();
+                for (int k = 0; k < amax; k++) {
+                    author = newFakeRandomAuthor();
+                    b.add(author);
+                }
                 LOG.fine(b.toString());
                 e.add(b);
             }

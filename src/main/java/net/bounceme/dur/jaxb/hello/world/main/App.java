@@ -23,7 +23,7 @@ public class App {
         URI inputURI = new URI(properties.getProperty("input_books_file_to_uri"));
         URI outputURI = new URI(properties.getProperty("output_books_file_to_uri"));
         BooksMarshaller booksMarshaller = new BooksMarshaller();
-        Library library = booksMarshaller.createNewLibraryFromScratch(3,4);
+        Library library = booksMarshaller.createNewLibraryFromScratch(2, 3, 4);
         booksMarshaller.marshallLibraryAndWriteToURI(library, outputURI);
     }
 
@@ -43,9 +43,9 @@ public class App {
         int numberOfObjectsToMake = Integer.parseInt(properties.getProperty("object_count"));
         MyNoteMarshaller myNoteMarshaller = new MyNoteMarshaller();
 //        Library myNotes = myNoteMarshaller.createMyNotes(numberOfObjectsToMake);
- //       myNoteMarshaller.marshallMyNotesAndWriteToFile(myNotes, inputURI);
+        //       myNoteMarshaller.marshallMyNotesAndWriteToFile(myNotes, inputURI);
 //        myNotes = myNoteMarshaller.unmarshallMyNotesFromFile(inputURI);
-   //     myNoteMarshaller.marshallMyNotesAndWriteToFile(myNotes, outputURI);
+        //     myNoteMarshaller.marshallMyNotesAndWriteToFile(myNotes, outputURI);
     }
 
     private void marshallAndWriteCountries() throws Exception {

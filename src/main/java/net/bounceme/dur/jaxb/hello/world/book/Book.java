@@ -1,12 +1,14 @@
 package net.bounceme.dur.jaxb.hello.world.book;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlType;
 
-//@XmlType(propOrder = {"isbn", "title"})
-//@XmlRootElement(name = "book")
+@XmlType(propOrder = {"isbn", "title","authors"})
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Book {
 
@@ -15,6 +17,7 @@ public class Book {
     @XmlAttribute(name = "isbn")
     private String isbn;
     private String title;
+    private List<Author> authors = new ArrayList<>();
 
     private Book() {
     }
@@ -27,7 +30,7 @@ public class Book {
         return isbn;
     }
 
-    private void setIsbn(String isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
@@ -39,8 +42,20 @@ public class Book {
         this.title = title;
     }
 
+    public List<Author> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
+    }
+
     @Override
     public String toString() {
         return getTitle() + getIsbn();
+    }
+
+    void add(Author author) {
+        authors.add(author);
     }
 }
