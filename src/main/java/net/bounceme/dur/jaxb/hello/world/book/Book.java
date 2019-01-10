@@ -58,4 +58,8 @@ public class Book {
     void add(Author author) {
         authors.add(author);
     }
+
+    Library newRandomLibrary() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

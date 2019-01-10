@@ -131,4 +131,10 @@ public class Author {
         this.placeOfDeath = placeOfDeath;
     }
 
+    public void populate() {
+        Utils u = new Utils();
+        first = u.newRandomString(RandomSalts.LOWER.getSalt());
+        dateOfBirth = u.randomDate();
+    }
+
 }

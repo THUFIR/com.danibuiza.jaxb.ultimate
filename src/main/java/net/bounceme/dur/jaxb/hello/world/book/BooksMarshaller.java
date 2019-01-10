@@ -13,47 +13,37 @@ public class BooksMarshaller {
 
     private String alpha = "abcdefghijklmnopqrstuvwyz";
     private String numeric = "0123456789";
+    private Builder builder = new Builder();
 
     public BooksMarshaller() {
     }
 
-    private Author newFakeRandomAuthor() throws Exception {
-        Author a = new Author(newRandomString(numeric));
-        a.setFirst(newRandomString(alpha));
-        a.setLast(newRandomString(alpha));
-        return a;
-    }
 
-    private Book newFakeRandomBook() throws Exception {
-        Book b = new Book(newRandomString(numeric));
-        b.setTitle(newRandomString(alpha));
-        return b;
-    }
-
-    private String newRandomString(String saltChars) {
-        StringBuilder salt = new StringBuilder();
-        Random rnd = new Random();
-        while (salt.length() < 18) { // length of the random string.
-            int index = (int) (rnd.nextFloat() * saltChars.length());
-            salt.append(saltChars.charAt(index));
-        }
-        String saltStr = salt.toString();
-        return saltStr;
-    }
+    
 
     public Library createNewLibraryFromScratch(int amax, int bmax, int emax) throws Exception {
         Book b = null;//newFakeRandomBook();
         Endowment e = null;//new Endowment();
         Author author = null;
+        Subjects subjects = null;
+        Subject subject = null;
 
-        Library l = new Library(newRandomString(alpha));
+        Library l = builder.newLib();
         for (int j = 0; j < emax; j++) {
-            e = new Endowment(newRandomString(alpha));
+            e = builder.newEndow();
             for (int i = 0; i < bmax; i++) {
-                b = newFakeRandomBook();
+                b = builder.newBook();
                 for (int k = 0; k < amax; k++) {
-                    author = newFakeRandomAuthor();
+                    author = builder.newAuthor();
                     b.add(author);
+                }
+                for (int k = 0; k < amax; k++) {
+                    subjects = builder.newSubjects();
+                    for (int x = 0; x < amax; x++) {
+                        subject = builder.newSubject();
+                        subjects.add(subject);
+                    }
+
                 }
                 LOG.fine(b.toString());
                 e.add(b);
