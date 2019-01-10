@@ -37,7 +37,7 @@ public class BooksMarshaller {
                         subject = builder.newSubject();
                         subjects.add(subject);
                     }
-                  //  b.setSubjects(subjects);
+                    book.setSubjects(subjects);
                 }
                 LOG.fine(book.toString());
                 endowment.add(book);
