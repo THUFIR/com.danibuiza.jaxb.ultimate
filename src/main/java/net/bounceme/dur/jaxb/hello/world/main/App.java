@@ -20,11 +20,11 @@ public class App {
 
     private void readBooksFromFile() throws Exception {
         properties.loadFromXML(App.class.getResourceAsStream("/jaxb.xml"));
-        URI inputURI = new URI(properties.getProperty("input_books_file_to_uri"));
-        URI outputURI = new URI(properties.getProperty("output_books_file_to_uri"));
+        URI outputURI = new URI(properties.getProperty("output"));
+        URI unmarshalFromURI = new URI(properties.getProperty("output_books_file_to_uri"));
         BooksMarshaler bm = new BooksMarshaler();
-        Library library = bm.unmarshal(outputURI);
-        LOG.info(library.toString());
+        Library library = bm.unmarshal(unmarshalFromURI);
+        bm.marshal(library, outputURI);
     }
 
     private void writeBooks() throws Exception {
