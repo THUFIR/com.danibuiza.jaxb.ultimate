@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(propOrder = {"isbn", "title", "authors", "subjects"})
+@XmlType(propOrder = {"isbn", "title", "authors" /*,"subjects"*/})
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Book {
 
@@ -24,8 +24,8 @@ public class Book {
     @XmlElement
     private List<Author> authors = new ArrayList<>();
 
-    @XmlElement
-    private Subjects subjects = null;
+  //  @XmlElement
+ //   private Subjects subjects = null;
 
     private Book() {
     }
@@ -67,6 +67,7 @@ public class Book {
         this.authors = authors;
     }
 
+    /*
     public Subjects getSubjects() {
         return subjects;
     }
@@ -74,5 +75,5 @@ public class Book {
     public void setSubjects(Subjects subjects) {
         this.subjects = subjects;
     }
-
+*/
 }

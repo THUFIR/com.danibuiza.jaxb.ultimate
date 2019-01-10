@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = {"uniqueID"})
+@XmlType(propOrder = {"uniqueID","subjects"})
 public class Subjects {
 
     private static final Logger LOG = Logger.getLogger(Subjects.class.getName());
